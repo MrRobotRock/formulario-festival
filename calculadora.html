@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculadora</title>
+  <!-- Aqui você linka o CSS externo -->
+  <link rel="stylesheet" href="calculadora.css">
+</head>
+<body>
+  <div class="calculator">
+    <h1>Calculadora</h1>
+    <input type="number" id="num1" placeholder="Digite o 1º número">
+    <input type="number" id="num2" placeholder="Digite o 2º número">
+    <br>
+    <button onclick="calcular('+')">Somar</button>
+    <button onclick="calcular('-')">Subtrair</button>
+    <button onclick="calcular('*')">Multiplicar</button>
+    <button onclick="calcular('/')">Dividir</button>
+    <br>
+    <input type="text" id="resultado" readonly placeholder="Resultado aparecerá aqui">
+  </div>
+
+  <script>
+    function calcular(operacao) {
+      const n1 = parseFloat(document.getElementById('num1').value);
+      const n2 = parseFloat(document.getElementById('num2').value);
+      let resultado;
+
+      if (isNaN(n1) || isNaN(n2)) {
+        resultado = "Digite dois números!";
+      } else {
+        switch (operacao) {
+          case '+':
+            resultado = n1 + n2;
+            break;
+          case '-':
+            resultado = n1 - n2;
+            break;
+          case '*':
+            resultado = n1 * n2;
+            break;
+          case '/':
+            resultado = n2 !== 0 ? n1 / n2 : "Divisão por zero!";
+            break;
+          default:
+            resultado = "Operação inválida";
+        }
+      }
+
+      document.getElementById('resultado').value = resultado;
+    }
+  </script>
+</body>
+</html>
