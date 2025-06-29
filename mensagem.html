@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Mensagem Personalizada</title>
+</head>
+<body>
+  <h2>Gerador de Mensagem</h2>
+
+  <label>Nome: <input type="text" id="nome"></label><br>
+  <label>Evento: <input type="text" id="evento"></label><br>
+  <label>Data: <input type="text" id="data"></label><br>
+  <label>Horário: <input type="text" id="horario"></label><br>
+  <label>Local: <input type="text" id="local"></label><br>
+  <label>Dias para o evento: <input type="number" id="diasParaEvento"></label><br><br>
+
+  <button onclick="gerar()">Gerar Mensagem</button>
+
+  <p id="resultado"></p>
+
+  <script>
+    function gerarMensagem(nome, evento, data, horario, local, diasParaEvento) {
+      if (diasParaEvento === 0) {
+        return `🎉 Olá, ${nome}! O evento "${evento}" é hoje (${data}) às ${horario}, no ${local}. Não perca! 🚀`;
+      } else {
+        return `Olá, ${nome}! Estamos felizes em confirmar sua participação no evento "${evento}". Ele acontecerá no dia ${data}, às ${horario}, no ${local}. Faltam apenas ${diasParaEvento} dias! 🎉 Nos vemos lá! 🚀`;
+      }
+    }
+
+    function gerar() {
+      const nome = document.getElementById("nome").value;
+      const evento = document.getElementById("evento").value;
+      const data = document.getElementById("data").value;
+      const horario = document.getElementById("horario").value;
+      const local = document.getElementById("local").value;
+      const diasParaEvento = Number(document.getElementById("diasParaEvento").value);
+
+      const mensagem = gerarMensagem(nome, evento, data, horario, local, diasParaEvento);
+      document.getElementById("resultado").textContent = mensagem;
+    }
+  </script>
+</body>
+</html>
